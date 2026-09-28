@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #6600ff, #00c8ff);
+      color: white;
+    }
+
+    .header {
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      background: rgb(11, 11, 11);
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 999;
+      position: relative;
+    }
+
+    .header img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    .header h2 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .icons img {
+      width: 25px;
+      height: 25px;
+    }
+
+    .section {
+      background: #333;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .section h3 {
+      margin-top: 0;
+    }
+
+    .content {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .item {
+      text-align: center;
+    }
+
+    .item img {
+      width: 80px;
+      height: 80px;
+      border-radius: 5%;
+    }
+
+    .date {
+      font-size: small;
+    }
+
+    .about {
+      font-size: small;
+    }
+
+    /* Hamburger menu styling */
+    .menu-toggle {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 30px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .bar {
+      height: 4px;
+      width: 100%;
+      background-color: #fff;
+      margin: 6px 0;
+      transition: 0.4s;
+    }
+
+    .menu-toggle.open .bar:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.open .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.open .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #111;
+      padding-top: 60px;
+      transition: 0.4s;
+      z-index: 1000;
+    }
+
+    .side-menu ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .side-menu ul li a {
+      color: white;
+      padding: 15px 20px;
+      text-decoration: none;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .side-menu ul li a:hover {
+      background-color: #575757;
+    }
+
+    .side-menu.open {
+      left: 0;
+    }
+
+    @media (max-width: 600px) {
+      .content {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="menu-toggle" id="menu-toggle">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <nav class="side-menu" id="side-menu">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Certificates</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="header">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <img src="https://media.licdn.com/dms/image/v2/D5603AQGeocDcjyW3wA/profile-displayphoto-shrink_400_400/B56ZOmn1A5GkAg-/0/1733667280140?e=1749081600&v=beta&t=ppptAYLWYXZza6LqPM8fKw7-tmMRqjleEBFI2MblO8U" alt="Profile" />
+      <div>
+        <h2>JORDEN COUTINHO</h2>
+        <p>Student, Programmer</p>
+      </div>
+    </div>
+    <div class="icons">
+      <a href="https://www.linkedin.com/in/jorden-coutinho-bb969b336/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" />
+      </a>
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=coutinhojorden@gmail.com" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" />
+      </a>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>About:</h3>
+    <p>You have probably heard the quote, <b> "A jack of all trades, but master of none." </b>
+      <br> However, the lesser-heard-of complete quote goes, <b>"A jack of all trades is a master of none, but oftentimes better than a master of one." </b>
+      <br><br> I’m Jorden, a curious 16-year-old college student with a passion for exploration, whether it’s discovering new skills, delving into technology, or stepping beyond my comfort zone.
+      <br> I’ve completed introductory courses in Graphic Design, Photography, and Pixel Art, which helped me develop a well-rounded foundation in creative problem-solving.
+      <br> As someone passionate about technology, I aim to pursue a career in programming and innovation.
+      <br> Let’s connect and collaborate!</p>
+  </div>
+
+  <div class="section">
+    <h3>Education:</h3>
+    <div class="content">
+      <div class="item">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDkZn46EsDdPWu06nJkU6GW7fu5CF_oKFFsA&s" alt="St. Mary's">
+        <p>St. Mary's High School, Kalina</p>
+        <p class="date">2014 - 2024</p>
+      </div>
+      <div class="item">
+        <img src="https://via.placeholder.com/80" alt="College">
+        <p>Junior College (MSBHSE)</p>
+        <p class="date">2024 - Present</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('menu-toggle');
+    const sideMenu = document.getElementById('side-menu');
+
+    toggleBtn.addEventListener('click', () => {
+      toggleBtn.classList.toggle('open');
+      sideMenu.classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>
