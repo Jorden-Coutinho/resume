@@ -1,227 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio</title>
-  <style>
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom, #6600ff, #00c8ff);
-      color: white;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jorden Coutinho | Portfolio</title>
+<meta name="description" content="Portfolio of Jorden Coutinho: computer science student, Python and C++ programmer, pixel artist and photographer.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👾</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #120e2b;
+    --panel: #1c1740;
+    --line: #362f6b;
+    --violet: #8b5cff;
+    --cyan: #3ee0ff;
+    --text: #efedff;
+    --muted: #aaa5d6;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+  body {
+    margin: 0;
+    font-family: "DM Sans", system-ui, sans-serif;
+    line-height: 1.65;
+    color: var(--text);
+    background: var(--ink);
+    background-image: linear-gradient(180deg, #2a1470 0%, var(--ink) 480px);
+    background-repeat: no-repeat;
+  }
+  a { color: var(--cyan); }
+  a:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 22px; }
 
-    .header {
-      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-      background: rgb(11, 11, 11);
-      padding: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      z-index: 999;
-      position: relative;
-    }
+  nav { position: sticky; top: 0; z-index: 5; background: rgba(18,14,43,.92); border-bottom: 1px solid var(--line); }
+  nav .wrap { display: flex; flex-wrap: wrap; gap: 4px 20px; padding-top: 12px; padding-bottom: 12px; }
+  nav a { color: var(--text); text-decoration: none; font-weight: 500; font-size: .95rem; }
+  nav a:hover { color: var(--cyan); }
 
-    .header img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-    }
+  header { padding: 72px 0 40px; }
+  h1 {
+    font-family: "Press Start 2P", monospace;
+    font-weight: 400;
+    font-size: clamp(1.5rem, 6.5vw, 2.6rem);
+    line-height: 1.35;
+    margin: 0 0 22px;
+    text-shadow: 4px 4px 0 var(--violet);
+  }
+  .tagline { font-size: 1.2rem; margin: 0 0 8px; }
+  .sub { color: var(--muted); margin: 0 0 26px; }
+  .links { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-block; padding: 10px 18px; border-radius: 4px; font-weight: 700;
+    text-decoration: none; border: 2px solid var(--cyan); color: var(--cyan);
+  }
+  .btn.solid { background: var(--cyan); color: var(--ink); }
+  .btn:hover { box-shadow: 4px 4px 0 var(--violet); }
 
-    .header h2 {
-      margin: 0;
-      font-size: 18px;
-    }
+  section { padding: 40px 0 8px; }
+  h2 { font-size: 1.5rem; margin: 0 0 18px; }
+  h3 { font-size: 1.05rem; margin: 0; }
+  p { margin: 0 0 14px; max-width: 68ch; }
+  .meta { color: var(--muted); font-size: .92rem; }
 
-    .icons {
-      display: flex;
-      gap: 15px;
-    }
+  .item { background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--violet); border-radius: 4px; padding: 16px 18px; margin-bottom: 14px; }
+  .item p { margin: 6px 0 0; }
+  .item .head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 14px; }
 
-    .icons img {
-      width: 25px;
-      height: 25px;
-    }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; list-style: none; margin: 0 0 16px; }
+  .tags li { border: 1px solid var(--line); background: var(--panel); border-radius: 4px; padding: 4px 12px; font-size: .92rem; }
+  .group { color: var(--muted); font-size: .92rem; margin: 0 0 8px; }
 
-    .section {
-      background: #333;
-      margin: 20px;
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    .section h3 {
-      margin-top: 0;
-    }
-
-    .content {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .item {
-      text-align: center;
-    }
-
-    .item img {
-      width: 80px;
-      height: 80px;
-      border-radius: 5%;
-    }
-
-    .date {
-      font-size: small;
-    }
-
-    .about {
-      font-size: small;
-    }
-
-    /* Hamburger menu styling */
-    .menu-toggle {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      width: 30px;
-      cursor: pointer;
-      z-index: 1001;
-    }
-
-    .bar {
-      height: 4px;
-      width: 100%;
-      background-color: #fff;
-      margin: 6px 0;
-      transition: 0.4s;
-    }
-
-    .menu-toggle.open .bar:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .menu-toggle.open .bar:nth-child(2) {
-      opacity: 0;
-    }
-
-    .menu-toggle.open .bar:nth-child(3) {
-      transform: rotate(-45deg) translate(6px, -6px);
-    }
-
-    .side-menu {
-      position: fixed;
-      top: 0;
-      left: -250px;
-      width: 250px;
-      height: 100%;
-      background-color: #111;
-      padding-top: 60px;
-      transition: 0.4s;
-      z-index: 1000;
-    }
-
-    .side-menu ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .side-menu ul li a {
-      color: white;
-      padding: 15px 20px;
-      text-decoration: none;
-      display: block;
-      transition: 0.3s;
-    }
-
-    .side-menu ul li a:hover {
-      background-color: #575757;
-    }
-
-    .side-menu.open {
-      left: 0;
-    }
-
-    @media (max-width: 600px) {
-      .content {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-  </style>
+  footer { padding: 48px 0 60px; color: var(--muted); font-size: .9rem; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
 </head>
 <body>
 
-  <div class="menu-toggle" id="menu-toggle">
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
+<nav aria-label="Main">
+  <div class="wrap">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
   </div>
+</nav>
 
-  <nav class="side-menu" id="side-menu">
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Projects</a></li>
-      <li><a href="#">Certificates</a></li>
-      <li><a href="#">Contact</a></li>
+<main class="wrap">
+
+  <header>
+    <h1>Jorden Coutinho</h1>
+    <p class="tagline">Computer science student and programmer</p>
+    <p class="sub">Python, C++, web, AI tools, pixel art and photography</p>
+    <div class="links">
+      <a class="btn solid" href="#projects">See my projects</a>
+      <a class="btn" href="https://www.linkedin.com/in/jorden-coutinho-bb969b336/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a class="btn" href="https://github.com/Jorden-Coutinho" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>About</h2>
+    <p>I'm Jorden, and I'm curious about how technology works and what I can build with it. I started with Python and Discord bots, moved on to C++ and web design, and lately I build AI-powered tools.</p>
+    <p>Outside of code I make pixel art, take photographs and enjoy music. I'm starting a B.Tech in Computer Science at Fr. Conceicao Rodrigues College of Engineering in 2026.</p>
+    <p>You've probably heard "a jack of all trades is a master of none." The full quote continues: "but oftentimes better than a master of one."</p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="item">
+      <div class="head"><h3>VitalDrive</h3><span class="meta">2026 to present</span></div>
+      <p>A medical history tracker, medication reminder and drug information hub with AI-powered insights. Built with Google AI Studio.</p>
+    </div>
+
+    <div class="item">
+      <div class="head"><h3>KaliGuard</h3><span class="meta">2025 to present</span></div>
+      <p>An LLM-based assistant for cybersecurity enthusiasts that promotes ethical hacking. Built with Google AI Studio.</p>
+    </div>
+
+    <div class="item">
+      <div class="head"><h3>Laher 2025 college fest website</h3><span class="meta">2025</span></div>
+      <p>Designed the website for my college fest with HTML, CSS and JavaScript, and worked with a classmate to connect it to JSON data.</p>
+    </div>
+
+    <div class="item">
+      <div class="head"><h3>Reverse Veo Architect</h3><span class="meta">2025</span></div>
+      <p>A tool for prompt engineers and AI students. Upload an image and get a prompt that describes it, which helps you learn how prompts and images relate. Built with Google AI Studio.</p>
+    </div>
+
+    <div class="item">
+      <div class="head"><h3>The Sand Battery</h3><span class="meta">2024</span></div>
+      <p>A science project that won 1st place at the KP West Ward Science Exhibition, representing my junior college.</p>
+    </div>
+    <!-- To add a link to a project, put this inside its <p>:  <a href="YOUR-LINK">View project</a> -->
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <div class="item">
+      <div class="head"><h3>Founder, Bili Discord chatbot</h3><span class="meta">Sep 2020 to Jan 2022</span></div>
+      <p>Created a Python-based Discord chatbot that reached 300+ users. Led a team of 6 across marketing, graphic design, programming and pixel art.</p>
+    </div>
+
+    <div class="item">
+      <div class="head"><h3>Pixel artist, Dino Bot</h3><span class="meta">2020</span></div>
+      <p>Designed pixel art assets for a text-based Discord game.</p>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+
+    <div class="item">
+      <div class="head"><h3>B.Tech, Computer Science</h3><span class="meta">2026 to 2030</span></div>
+      <p class="meta">Fr. Conceicao Rodrigues College of Engineering</p>
+    </div>
+
+    <div class="item">
+      <div class="head"><h3>HSC: Physics, Chemistry, Mathematics, Computer Science</h3><span class="meta">2024 to 2026</span></div>
+      <p class="meta">SVKM's Acharya Ambalal V. Patel Junior College · 68.67%</p>
+      <p>Assistant Contingent Leader. Winner of the Mr. AAVP Award.</p>
+    </div>
+
+    <div class="item">
+      <div class="head"><h3>SSC</h3><span class="meta">2012 to 2024</span></div>
+      <p class="meta">St. Mary's High School, Kalina · 90.80%</p>
+      <p>Head Boy (2017 to 2018) and Yellow House Leader (2023). Won awards in district, ward, inter-school and school-level competitions.</p>
+    </div>
+  </section>
+
+  <section id="certificates">
+    <h2>Certificates</h2>
+
+    <div class="item">
+      <div class="head"><h3>Code in Place</h3><span class="meta">May 2026</span></div>
+      <p class="meta">Stanford University</p>
+    </div>
+    <div class="item">
+      <div class="head"><h3>Remote Sensing Technology Overview</h3><span class="meta">Mar 2024</span></div>
+      <p class="meta">Indian Space Research Organisation (ISRO), Shiksha Gagan programme</p>
+    </div>
+    <div class="item">
+      <div class="head"><h3>1st Place, KP West Ward Science Exhibition</h3><span class="meta">Dec 2024</span></div>
+      <p class="meta">Inspector of Education, Mumbai West Division</p>
+    </div>
+    <div class="item">
+      <div class="head"><h3>Sololearn courses</h3><span class="meta">2022 to 2026</span></div>
+      <p>Python Developer, Introduction to C++, Basics of Machine Learning, Prompt Engineering, and AI-Powered A/B Testing.</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <p class="group">Technical</p>
+    <ul class="tags">
+      <li>Python</li><li>C++</li><li>HTML</li><li>CSS</li><li>JavaScript</li>
+      <li>Prompt engineering</li><li>Machine learning basics</li><li>Google AI Studio</li>
     </ul>
-  </nav>
+    <p class="group">Creative</p>
+    <ul class="tags">
+      <li>Pixel art</li><li>Graphic design</li><li>Photography</li><li>Photo and video editing</li>
+    </ul>
+    <p class="group">Languages</p>
+    <ul class="tags">
+      <li>English</li><li>Hindi</li><li>Marathi</li><li>French</li><li>Konkani</li>
+    </ul>
+  </section>
 
-  <div class="header">
-    <div style="display: flex; align-items: center; gap: 10px;">
-      <img src="https://media.licdn.com/dms/image/v2/D5603AQGeocDcjyW3wA/profile-displayphoto-shrink_400_400/B56ZOmn1A5GkAg-/0/1733667280140?e=1749081600&v=beta&t=ppptAYLWYXZza6LqPM8fKw7-tmMRqjleEBFI2MblO8U" alt="Profile" />
-      <div>
-        <h2>JORDEN COUTINHO</h2>
-        <p>Student, Programmer</p>
-      </div>
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Want to collaborate or just say hi? Email me or find me online.</p>
+    <div class="links">
+      <a class="btn solid" href="mailto:coutinhojorden@gmail.com">Email me</a>
+      <a class="btn" href="https://www.linkedin.com/in/jorden-coutinho-bb969b336/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a class="btn" href="https://github.com/Jorden-Coutinho" target="_blank" rel="noopener noreferrer">GitHub</a>
     </div>
-    <div class="icons">
-      <a href="https://www.linkedin.com/in/jorden-coutinho-bb969b336/" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" />
-      </a>
-      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=coutinhojorden@gmail.com" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" />
-      </a>
-    </div>
-  </div>
+  </section>
 
-  <div class="section">
-    <h3>About:</h3>
-    <p>You have probably heard the quote, <b> "A jack of all trades, but master of none." </b>
-      <br> However, the lesser-heard-of complete quote goes, <b>"A jack of all trades is a master of none, but oftentimes better than a master of one." </b>
-      <br><br> I’m Jorden, a curious 16-year-old college student with a passion for exploration, whether it’s discovering new skills, delving into technology, or stepping beyond my comfort zone.
-      <br> I’ve completed introductory courses in Graphic Design, Photography, and Pixel Art, which helped me develop a well-rounded foundation in creative problem-solving.
-      <br> As someone passionate about technology, I aim to pursue a career in programming and innovation.
-      <br> Let’s connect and collaborate!</p>
-  </div>
+</main>
 
-  <div class="section">
-    <h3>Education:</h3>
-    <div class="content">
-      <div class="item">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDkZn46EsDdPWu06nJkU6GW7fu5CF_oKFFsA&s" alt="St. Mary's">
-        <p>St. Mary's High School, Kalina</p>
-        <p class="date">2014 - 2024</p>
-      </div>
-      <div class="item">
-        <img src="https://via.placeholder.com/80" alt="College">
-        <p>Junior College (MSBHSE)</p>
-        <p class="date">2024 - Present</p>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const toggleBtn = document.getElementById('menu-toggle');
-    const sideMenu = document.getElementById('side-menu');
-
-    toggleBtn.addEventListener('click', () => {
-      toggleBtn.classList.toggle('open');
-      sideMenu.classList.toggle('open');
-    });
-  </script>
+<footer>
+  <div class="wrap">© 2026 Jorden Coutinho</div>
+</footer>
 
 </body>
 </html>
