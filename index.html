@@ -27,8 +27,31 @@
     line-height: 1.65;
     color: var(--text);
     background: var(--ink);
-    background-image: linear-gradient(180deg, #2a1470 0%, var(--ink) 480px);
-    background-repeat: no-repeat;
+    position: relative;
+    isolation: isolate;
+  }
+  /* pixel-grid texture, fixed so it doesn't scroll with the page */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-color: var(--ink);
+    background-image:
+      linear-gradient(rgba(239,237,255,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(239,237,255,.05) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  /* soft glow blobs for depth, plus the original top wash */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      radial-gradient(480px 320px at 12% 8%, rgba(139,92,255,.35), transparent 70%),
+      radial-gradient(420px 300px at 92% 4%, rgba(62,224,255,.18), transparent 70%),
+      radial-gradient(600px 500px at 50% 100%, rgba(139,92,255,.14), transparent 75%);
   }
   a { color: var(--cyan); }
   a:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
@@ -94,10 +117,10 @@
 
   <header>
     <h1>Jorden Coutinho</h1>
-    <p class="tagline">Computer science student and programmer</p>
-    <p class="sub">Python, C++, web, AI tools, pixel art and photography</p>
+    <p class="tagline">Computer Science Student</p>
+    <p class="sub">Jugaad-Expert</p>
     <div class="links">
-      <a class="btn solid" href="#projects">See my projects</a>
+      <a class="btn solid" href="#projects">Project Showcase</a>
       <a class="btn" href="https://www.linkedin.com/in/jorden-coutinho-bb969b336/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       <a class="btn" href="https://github.com/Jorden-Coutinho" target="_blank" rel="noopener noreferrer">GitHub</a>
     </div>
@@ -105,37 +128,37 @@
 
   <section id="about">
     <h2>About</h2>
-    <p>I'm Jorden, and I'm curious about how technology works and what I can build with it. I started with Python and Discord bots, moved on to C++ and web design, and lately I build AI-powered tools.</p>
-    <p>Outside of code I make pixel art, take photographs and enjoy music. I'm starting a B.Tech in Computer Science at Fr. Conceicao Rodrigues College of Engineering in 2026.</p>
-    <p>You've probably heard "a jack of all trades is a master of none." The full quote continues: "but oftentimes better than a master of one."</p>
+    <p>I'm Jorden, and I'm curious about how technology works and what I can build with it. I started with Python and Discord Bots, moved on to C++ and have been considering learning Java as of late.</p>
+    <p>Outside of code I enjoy landscape photography and videography and LOVE music. I'm currently doing my B.Tech in Computer Science at Fr. Conceicao Rodrigues College of Engineering, Bandra.</p>
+    <p></p>
   </section>
 
   <section id="projects">
     <h2>Projects</h2>
 
     <div class="item">
-      <div class="head"><h3>VitalDrive</h3><span class="meta">2026 to present</span></div>
-      <p>A medical history tracker, medication reminder and drug information hub with AI-powered insights. Built with Google AI Studio.</p>
+      <div class="head"><h3>Bili</h3><span class="meta">2020 - 2022</span></div>
+      <p>Co-created a Discord chatbot based in python with features like server administration and moderation. Hosted online ~24/7 with Replit</p>
+    </div>
+
+    <div class="item">
+      <div class="head"><h3>Ludifico</h3><span class="meta">2021 - 2023</span></div>
+      <p>Created a Discord chatbot with a basic economy system. Allowed you to earn and spend in-game-currency.</p>
+    </div>
+
+    <div class="item">
+      <div class="head"><h3>College Sports Event Website</h3><span class="meta">2025</span></div>
+      <p>Designed and Created a website for an Intra-college sporting event. Complete with Youtube-Live Integration, Admin handling and Live Score Updates. (now inactive)</p>
     </div>
 
     <div class="item">
       <div class="head"><h3>KaliGuard</h3><span class="meta">2025 to present</span></div>
-      <p>An LLM-based assistant for cybersecurity enthusiasts that promotes ethical hacking. Built with Google AI Studio.</p>
-    </div>
-
-    <div class="item">
-      <div class="head"><h3>Laher 2025 college fest website</h3><span class="meta">2025</span></div>
-      <p>Designed the website for my college fest with HTML, CSS and JavaScript, and worked with a classmate to connect it to JSON data.</p>
-    </div>
-
-    <div class="item">
-      <div class="head"><h3>Reverse Veo Architect</h3><span class="meta">2025</span></div>
-      <p>A tool for prompt engineers and AI students. Upload an image and get a prompt that describes it, which helps you learn how prompts and images relate. Built with Google AI Studio.</p>
+      <p>Built a custom LLM with Google AI Studio by Jailbreaking to help with cybersecurity and hacking which general AI models do not provide information on.</p>
     </div>
 
     <div class="item">
       <div class="head"><h3>The Sand Battery</h3><span class="meta">2024</span></div>
-      <p>A science project that won 1st place at the KP West Ward Science Exhibition, representing my junior college.</p>
+      <p>Created the project that won us 1st place at the KP West Ward Science Exhibition, representing my junior college under the guidance of my professors.</p>
     </div>
     <!-- To add a link to a project, put this inside its <p>:  <a href="YOUR-LINK">View project</a> -->
   </section>
@@ -144,13 +167,18 @@
     <h2>Experience</h2>
 
     <div class="item">
-      <div class="head"><h3>Founder, Bili Discord chatbot</h3><span class="meta">Sep 2020 to Jan 2022</span></div>
-      <p>Created a Python-based Discord chatbot that reached 300+ users. Led a team of 6 across marketing, graphic design, programming and pixel art.</p>
+      <div class="head"><h3>Creator, Bili</h3><span class="meta">Sep 2020 to Jan 2022</span></div>
+      <p>Bili was Python-based Discord chatbot that reached 500+ users across 3 servers. Led a team of 5 across marketing, graphic design, programming and pixel art.</p> <!--ME, SZ_SKILL, JARRON, KANA, CREMEBOBA ,dino-bot-guy-->
     </div>
 
     <div class="item">
-      <div class="head"><h3>Pixel artist, Dino Bot</h3><span class="meta">2020</span></div>
-      <p>Designed pixel art assets for a text-based Discord game.</p>
+      <div class="head"><h3>Graphic Designer</h3><span class="meta">2024-2025</span></div>
+      <p>Created Graphics (Posters, Thumbnails, Edits) for YU4C Mumbai. <a href="https://www.instagram.com/yu4cmumbai/">YU4C's Instagram</a></p>
+    </div>
+
+    <div class="item">
+      <div class="head"><h3>Pixel Artist</h3><span class="meta">2020</span></div>
+      <p>Worked as a freelance Pixel Artist generating assets for discord game chatbots. All assets from in-game items, currency to the bot icon itself.</p>
     </div>
   </section>
 
@@ -158,41 +186,39 @@
     <h2>Education</h2>
 
     <div class="item">
-      <div class="head"><h3>B.Tech, Computer Science</h3><span class="meta">2026 to 2030</span></div>
+      <div class="head"><h3>B.Tech, Computer Science</h3><span class="meta">2026 - Present</span></div>
       <p class="meta">Fr. Conceicao Rodrigues College of Engineering</p>
     </div>
 
     <div class="item">
-      <div class="head"><h3>HSC: Physics, Chemistry, Mathematics, Computer Science</h3><span class="meta">2024 to 2026</span></div>
+      <div class="head"><h3>HSC: PCM with Computer Science</h3><span class="meta">2024 to 2026</span></div>
       <p class="meta">SVKM's Acharya Ambalal V. Patel Junior College · 68.67%</p>
-      <p>Assistant Contingent Leader. Winner of the Mr. AAVP Award.</p>
+      <p>Assistant Contingent Leader (2024). Winner of the Mr. AAVP Award(2024)</p>
     </div>
 
     <div class="item">
-      <div class="head"><h3>SSC</h3><span class="meta">2012 to 2024</span></div>
+      <div class="head"><h3>Maharashtra SSC</h3><span class="meta">2012 to 2024</span></div>
       <p class="meta">St. Mary's High School, Kalina · 90.80%</p>
-      <p>Head Boy (2017 to 2018) and Yellow House Leader (2023). Won awards in district, ward, inter-school and school-level competitions.</p>
+      <p>Head Boy (2017), Yellow House Leader (2023). Won awards in numerous district, ward, inter-school and school-level competitions.</p>
     </div>
   </section>
 
   <section id="certificates">
-    <h2>Certificates</h2>
+    <h2>Certificate Courses</h2>
 
     <div class="item">
       <div class="head"><h3>Code in Place</h3><span class="meta">May 2026</span></div>
-      <p class="meta">Stanford University</p>
+      <p class="meta">Studied Stanford University's CS106A syllabus. Relearnt the basics of Python. </p>
     </div>
+
+    <div class="item">
+      <div class="head"><h3>Sololearn Courses</h3><span class="meta">2022 to 2026</span></div>
+      <p>Python Developer, Introduction to C++, Basics of Machine Learning, Prompt Engineering, and AI-Powered A/B Testing.</p>
+    </div>
+
     <div class="item">
       <div class="head"><h3>Remote Sensing Technology Overview</h3><span class="meta">Mar 2024</span></div>
       <p class="meta">Indian Space Research Organisation (ISRO), Shiksha Gagan programme</p>
-    </div>
-    <div class="item">
-      <div class="head"><h3>1st Place, KP West Ward Science Exhibition</h3><span class="meta">Dec 2024</span></div>
-      <p class="meta">Inspector of Education, Mumbai West Division</p>
-    </div>
-    <div class="item">
-      <div class="head"><h3>Sololearn courses</h3><span class="meta">2022 to 2026</span></div>
-      <p>Python Developer, Introduction to C++, Basics of Machine Learning, Prompt Engineering, and AI-Powered A/B Testing.</p>
     </div>
   </section>
 
@@ -200,16 +226,22 @@
     <h2>Skills</h2>
     <p class="group">Technical</p>
     <ul class="tags">
-      <li>Python</li><li>C++</li><li>HTML</li><li>CSS</li><li>JavaScript</li>
-      <li>Prompt engineering</li><li>Machine learning basics</li><li>Google AI Studio</li>
+      <li>Python</li><li>C++</li><li>Prompt Engineering</li><li>GitHub</li><li>Google AI Studio</li>
     </ul>
+
     <p class="group">Creative</p>
     <ul class="tags">
-      <li>Pixel art</li><li>Graphic design</li><li>Photography</li><li>Photo and video editing</li>
+      <li>Graphic Design</li><li>Musical Keyboard</li><li>Singing</li><li>Self-Taught Guitar</li><li>Self-Taught Ukulele</li><li>Photography</li><li>Basic Photo and video editing</li>
     </ul>
+
+    <p class="group">Soft Skills</p>
+    <ul class="tags">
+      <li>Collaborative Problem Solving</li><li>Public Speaking</li><li>Active Listening <a href="https://www.7cups.com/">7Cups Volunteer</a></li><li>Critical Thinking</li>
+    </ul>
+
     <p class="group">Languages</p>
     <ul class="tags">
-      <li>English</li><li>Hindi</li><li>Marathi</li><li>French</li><li>Konkani</li>
+      <li>English (Native Fluency)</li><li>Hindi (Working Profiency)</li><li>Marathi (Basic)</li><li>Duolingo French</li><li>Konkani</li>
     </ul>
   </section>
 
@@ -220,13 +252,14 @@
       <a class="btn solid" href="mailto:coutinhojorden@gmail.com">Email me</a>
       <a class="btn" href="https://www.linkedin.com/in/jorden-coutinho-bb969b336/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       <a class="btn" href="https://github.com/Jorden-Coutinho" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a class="btn" href="https://discord.com/users/jc_sung.jin.woo" target="_blank" rel="noopener noreferrer">Discord</a>
     </div>
   </section>
 
 </main>
 
 <footer>
-  <div class="wrap">© 2026 Jorden Coutinho</div>
+  <div class="wrap">© 2026 Jorden Coutinho ft. Claude lol</div>
 </footer>
 
 </body>
